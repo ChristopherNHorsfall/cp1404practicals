@@ -1,12 +1,12 @@
 """
-CP1404/CP5632 - Practical
-Broken program to determine score status
+CP1404/CP5632 - Practical 2
+
 """
 import random
 
 
 def main():
-    """"Print comment based on user's score"""
+    """"Print comment based on score"""
     score = generate_random_score()
     # score = float(input("Enter score: "))
     # while score < 0 or score > 100:
