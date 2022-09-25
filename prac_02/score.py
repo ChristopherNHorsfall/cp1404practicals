@@ -1,6 +1,5 @@
 """
-CP1404/CP5632 - Practical 2
-
+Prac 02 : Score
 """
 import random
 
@@ -8,11 +7,18 @@ import random
 def main():
     """"Print comment based on score"""
     score = generate_random_score()
-    # score = float(input("Enter score: "))
-    # while score < 0 or score > 100:
-    #     print("Invalid score")
-    #     score = float(input("Enter score: "))
+    # score = get_user_score(score)
+    print(f"Score : {score}")
     print_comment(score)
+
+
+def get_user_score():
+    """Get user score from 0 to 100 inclusive."""
+    score = float(input("Enter score: "))
+    while score < 0 or score > 100:
+        print("Invalid score")
+        score = float(input("Enter score: "))
+    return score
 
 
 def print_comment(score):

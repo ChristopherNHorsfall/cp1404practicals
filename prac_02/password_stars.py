@@ -1,4 +1,5 @@
 """
+Prac 02 : Password Stars
 Turns passwords into a string of stars
 """
 

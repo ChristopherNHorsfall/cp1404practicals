@@ -1,11 +1,11 @@
 """
-
+Prac 02 : Score Menu
 """
 MENU = "(E)nter Score\n(P)rint Result\nPrint (S)tars\n(Q)uit"
 
 
 def main():
-    """ """
+    """get valid score from user, comment on such score, and print stars based on score."""
     score = 0
     print(MENU)
     choice = input(">>> ").upper()
@@ -25,7 +25,7 @@ def main():
 
 
 def get_valid_score():
-    """ """
+    """Get score from user in the range of 0 to 100 inclusive"""
     score = int(input("Enter score: "))
     while score < 0 or score > 100:
         print("Invalid score")
