@@ -9,8 +9,7 @@ FILENAME = "subject_data.txt"
 def main():
     data = get_data()
     # print(data)
-    for details in data:
-        display_details(*details)
+    display_data(data)
 
 
 def get_data():
@@ -33,8 +32,13 @@ def get_data():
     return data
 
 
-def display_details(subject, teacher, number_of_students):
-    print(f"{subject} is taught by {teacher} and has {number_of_students} students")
+def display_data(data):
+    for details in data:
+        subject, teacher, number_of_students = details
+        print(f"{subject} is taught by {teacher:12} and has {number_of_students:3} students")
+
+
+# def display_details(subject, teacher, number_of_students):
 
 
 main()
