@@ -28,7 +28,7 @@ def generate_lottery_ticket(number_of_lines):
             value = random.choice(available_numbers)
             available_numbers.remove(value)
             line.append(value)
-        line.sort()
+        line.sort()  # Sort now rather than in display function, no benefit otherwise
 
     return lottery_ticket
 
@@ -36,7 +36,6 @@ def generate_lottery_ticket(number_of_lines):
 def display_lottery_ticket(lottery_ticket):
     """Displays lottery ticket neatly"""
     for line in lottery_ticket:
-        # line.sort()
         for value in line:
             print(f"{value:4}", end="")
         print(" ")
