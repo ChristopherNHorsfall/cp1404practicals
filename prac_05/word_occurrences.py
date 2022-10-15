@@ -14,10 +14,10 @@ for word in words:
         word_to_count[word] += 1
     except KeyError:
         word_to_count[word] = 1
-dict(sorted(word_to_count.items()))
-print(word_to_count)
 
+word_to_count = dict(sorted(word_to_count.items()))
 
+max_length = max(len(word) for word in word_to_count)
 
-
-
+for word, count in word_to_count.items():
+    print(f"{word:{max_length}} : {count}")
