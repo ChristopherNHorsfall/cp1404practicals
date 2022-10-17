@@ -2,21 +2,21 @@
 CP1404/CP5632 Practical
 Game, Set, Match
 """
+FILENAME = "wimbledon.csv"
+INDEX_COUNTRY = 1
+INDEX_WINNER = 2
 
 
 def main():
-    """"""
-    records = get_records("wimbledon.csv")
-    # print(records)
+    """Read data from file and display details about Wimbledon winners and countries."""
+    records = get_records(FILENAME)
     winner_to_count = count_winners(records)
-    winning_nations = count_winners_nation(records)
-    # print(winning_nations)
-    # print(winner_to_count)
-    display_winners(winner_to_count, winning_nations)
+    winning_countries = find_winning_countries(records)
+    display_winners(winner_to_count, winning_countries)
 
 
 def get_records(filename):
-    """ """
+    """Get records from file in list of lists form."""
     with open(filename, "r", encoding="utf-8-sig") as in_file:
         records = []
         in_file.readline()  # Skip header line
@@ -35,10 +35,10 @@ def get_records(filename):
 
 
 def count_winners(records):
-    """"""
+    """Create dictionary of winners mapped to a count of how many times they have won."""
     winner_to_count = {}
     for record in records:
-        winner = record[2]
+        winner = record[INDEX_WINNER]
         try:
             winner_to_count[winner] += 1
         except KeyError:
@@ -47,27 +47,23 @@ def count_winners(records):
     return winner_to_count
 
 
-def count_winners_nation(records):
-    """"""
-    winning_nations = set()
+def find_winning_countries(records):
+    """Finds countries that have won from records, and returns information as a list."""
+    winning_countries = set()
     for record in records:
-        nation = record[1]
-        try:
-            winning_nations.add(nation)
-        except:
-            pass
-    return list(winning_nations)
+        country = record[INDEX_COUNTRY]
+        winning_countries.add(country)
+    return list(winning_countries)
 
 
-def display_winners(winner_to_count, winning_nations):
-    """"""
+def display_winners(winner_to_count, winning_countries):
+    """Display winners and countries."""
     print("Wimbledon Champions:")
     for winner, count in winner_to_count.items():
         print(f"{winner} {count}")
 
-    print(f"These {len(winning_nations)} countries have won Wimbledon:")
-    print(", ".join(nation for nation in sorted(winning_nations)))
-
+    print(f"These {len(winning_countries)} countries have won Wimbledon:")
+    print(", ".join(country for country in sorted(winning_countries)))
 
 
 main()
