@@ -2,7 +2,7 @@
 CP1404/CP5632 Practical
 Word Occurrences
 Estimate: 30mins
-Actual: 30min +
+Actual: 60min +
 """
 
 text = input("Text: ")
@@ -16,7 +16,12 @@ for word in words:
         word_to_count[word] = 1
 
 # Sort word_to_count
-word_to_count = dict(sorted(word_to_count.items()))
+# This technique is inefficient with large dictionaries
+# word_to_count = dict(sorted(word_to_count.items()))
+
+# Use list of dictionary keys sorted instead
+words = list(word_to_count.keys())
+words.sort()
 
 max_length = max(len(word) for word in word_to_count)
 
