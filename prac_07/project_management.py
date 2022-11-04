@@ -35,7 +35,7 @@ def main():
 
 
 def load_projects(filename):
-    """Load projects from file and return list of project objects"""
+    """Load data from file and return list of project objects"""
     with open(filename, "r", encoding="utf-8-sig") as in_file:
         projects = []
         in_file.readline()  # Skip header line
