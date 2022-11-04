@@ -1,7 +1,7 @@
 """
 
 """
-
+import datetime
 from prac_07.project import Project
 
 MENU = "- (L)oad projects\n- (S)ave projects\n- (D)isplay projects\n- (F)ilter projects by date\n- (A)dd new " \
@@ -13,7 +13,7 @@ def main():
     """"""
     projects = load_projects(FILENAME)
     print(MENU)
-    choice = input(">>> ".upper())
+    choice = input(">>> ").upper()
     while choice != "q":
         if choice == "L":
             pass
@@ -23,7 +23,7 @@ def main():
             for project in projects:
                 print(project)
         elif choice == "F":
-            pass
+            filter_projects(projects)
         elif choice == "A":
             pass
         elif choice == "U":
@@ -31,7 +31,7 @@ def main():
         else:
             print("Invalid input")
         print(MENU)
-        choice = input(">>> ".upper())
+        choice = input(">>> ").upper()
 
 
 def load_projects(filename):
@@ -43,12 +43,24 @@ def load_projects(filename):
             project_parts = line.strip().split("\t")
             print(project_parts)
             name, start_date, priority, cost_estimate, completion_percentage = project_parts
+            start_date = datetime.datetime.strptime(start_date, "%d/%m/%Y").date()
             priority = int(priority)
             cost_estimate = float(cost_estimate)
             completion_percentage = int(completion_percentage)
             project_to_add = Project(name, start_date, priority, cost_estimate, completion_percentage)
             projects.append(project_to_add)
     return projects
+
+
+def filter_projects(projects):
+    """"""
+    date_string = input("Show projects that start after date (dd/mm/yy): ")
+    # Convert string to date object
+    start_after_date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+    for project in projects:
+        if project.start_date > start_after_date:
+            print(project)
+
 
 
 main()
