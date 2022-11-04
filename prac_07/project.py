@@ -6,7 +6,7 @@
 class Project:
     """Represents a Project object"""
 
-    def __int__(self, name, start_date, priority, cost_estimate, completion_percentage):
+    def __init__(self, name="", start_date="00/00/0000", priority=0, cost_estimate=0.00, completion_percentage=0):
         """Initalise a Project object"""
         self.name = name
         self.start_date = start_date
