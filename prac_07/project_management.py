@@ -1,6 +1,7 @@
 """
 
 """
+import operator
 import datetime
 from prac_07.project import Project
 
@@ -26,22 +27,39 @@ def main():
         elif choice == "A":
             pass
         elif choice == "U":
-            pass
+            update_project(projects)
         else:
             print("Invalid input")
         print(MENU)
         choice = input(">>> ").upper()
 
 
+def update_project(projects):
+    """"""
+    for i, project in enumerate(projects):
+        print(i, project)
+    project_choice = int(input("Project choice: "))
+    new_percentage = int(input("New Percentage: "))
+    new_priority = int(input("New Priority: "))
+    chosen_project = projects[project_choice]
+    print(chosen_project)
+    chosen_project.completion_percentage = new_percentage
+    if new_priority != "":
+        chosen_project.priority = new_priority
+    print(chosen_project)
+
+
 def display_projects(projects):
-    """Display list of projects organised into groups: incomplete and completed projects"""
+    """Display list of projects organised into groups and sorted by priority"""
     incomplete_projects = [project for project in projects if project.completion_percentage < 100]
     if len(incomplete_projects) > 0:
+        incomplete_projects.sort(key=operator.attrgetter("priority"))
         print("Incomplete projects:")
         for project in incomplete_projects:
             print(f"  {project}")
     complete_projects = [project for project in projects if project.completion_percentage == 100]
     if len(complete_projects) > 0:
+        complete_projects.sort(key=operator.attrgetter("priority"))
         print("Completed projects")
         for project in complete_projects:
             print(f"  {project}")
