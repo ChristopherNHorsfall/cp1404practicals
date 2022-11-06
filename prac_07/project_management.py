@@ -20,8 +20,7 @@ def main():
         elif choice == "S":
             pass
         elif choice == "D":
-            for project in projects:
-                print(project)
+            display_projects(projects)
         elif choice == "F":
             filter_projects(projects)
         elif choice == "A":
@@ -32,6 +31,20 @@ def main():
             print("Invalid input")
         print(MENU)
         choice = input(">>> ").upper()
+
+
+def display_projects(projects):
+    """Display list of projects organised into groups: incomplete and completed projects"""
+    incomplete_projects = [project for project in projects if project.completion_percentage < 100]
+    if len(incomplete_projects) > 0:
+        print("Incomplete projects:")
+        for project in incomplete_projects:
+            print(f"  {project}")
+    complete_projects = [project for project in projects if project.completion_percentage == 100]
+    if len(complete_projects) > 0:
+        print("Completed projects")
+        for project in complete_projects:
+            print(f"  {project}")
 
 
 def load_projects(filename):
