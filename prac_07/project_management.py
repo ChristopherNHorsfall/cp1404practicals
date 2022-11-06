@@ -42,8 +42,8 @@ def load_projects(filename):
         for line in in_file:
             project_parts = line.strip().split("\t")
             print(project_parts)
-            name, start_date, priority, cost_estimate, completion_percentage = project_parts
-            start_date = datetime.datetime.strptime(start_date, "%d/%m/%Y").date()
+            name, start_date_string, priority, cost_estimate, completion_percentage = project_parts
+            start_date = datetime.datetime.strptime(start_date_string, "%d/%m/%Y").date()
             priority = int(priority)
             cost_estimate = float(cost_estimate)
             completion_percentage = int(completion_percentage)
@@ -57,10 +57,10 @@ def filter_projects(projects):
     date_string = input("Show projects that start after date (dd/mm/yy): ")
     # Convert string to date object
     start_after_date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+    print(start_after_date)
     for project in projects:
         if project.start_date > start_after_date:
             print(project)
-
 
 
 main()
